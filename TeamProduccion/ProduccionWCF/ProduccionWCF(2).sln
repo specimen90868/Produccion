@@ -1,0 +1,66 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "ProduccionWCF(2)", "http://localhost:17384", "{BC7969F7-4262-406C-B721-F6902CDB28EB}"
+	ProjectSection(WebsiteProperties) = preProject
+		UseIISExpress = "true"
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_17384"
+		Debug.AspNetCompiler.PhysicalPath = "..\TeamProduccion\ProduccionWCF\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_17384\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_17384"
+		Release.AspNetCompiler.PhysicalPath = "..\TeamProduccion\ProduccionWCF\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_17384\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		SlnRelativePath = "..\TeamProduccion\ProduccionWCF\"
+		DefaultWebSiteLanguage = "Visual C#"
+	EndProjectSection
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Produccion(3)", "http://localhost:17433", "{E569F4AE-5E20-4C28-8EC6-884539D64F4A}"
+	ProjectSection(WebsiteProperties) = preProject
+		UseIISExpress = "true"
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_17433"
+		Debug.AspNetCompiler.PhysicalPath = "..\TeamProduccion\Produccion\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_17433\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_17433"
+		Release.AspNetCompiler.PhysicalPath = "..\TeamProduccion\Produccion\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_17433\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		SlnRelativePath = "..\TeamProduccion\Produccion\"
+		DefaultWebSiteLanguage = "Visual C#"
+	EndProjectSection
+	ProjectSection(ProjectDependencies) = postProject
+		{BC7969F7-4262-406C-B721-F6902CDB28EB} = {BC7969F7-4262-406C-B721-F6902CDB28EB}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BC7969F7-4262-406C-B721-F6902CDB28EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC7969F7-4262-406C-B721-F6902CDB28EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E569F4AE-5E20-4C28-8EC6-884539D64F4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E569F4AE-5E20-4C28-8EC6-884539D64F4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
