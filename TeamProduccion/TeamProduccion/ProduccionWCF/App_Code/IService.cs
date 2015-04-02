@@ -101,4 +101,12 @@ public interface IService
     [OperationContract]
     bool EliminaCliente(string cliente);
     #endregion
+
+    #region REPORTES
+    [OperationContract]
+    List<string> ReporteTop(string datos, int tipo);
+
+    [OperationContract]
+    List<string> ReporteConsumoVentas(string datos, int tipo);
+    #endregion
 }

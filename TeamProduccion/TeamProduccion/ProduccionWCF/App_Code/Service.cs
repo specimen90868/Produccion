@@ -248,4 +248,46 @@ public class Service : IService
         return valido;
     }
     #endregion
+
+    #region METODOS REPORTES
+    public List<string> ReporteTop(string datos,int tipo)
+    {
+        ClsReportes objDato;
+        objDato = JsonConvert.DeserializeObject<ClsReportes>(datos);
+        List<string> data = new List<string>();
+        switch (tipo)
+        {
+                //COMPRAS
+            case 0:
+                data = objDato.SeleccionaDatosTopCompras();
+                break;
+                //VENTAS
+            case 1:
+                data = objDato.SeleccionaDatosTopVentas();
+                break;
+
+        }
+        return data;
+    }
+
+    public List<string> ReporteConsumoVentas(string datos, int tipo)
+    {
+        ClsReportes objDato;
+        objDato = JsonConvert.DeserializeObject<ClsReportes>(datos);
+        List<string> data = new List<string>();
+        switch (tipo)
+        {
+            //COMPRAS
+            case 0:
+                data = objDato.SeleccionaDatosConsumo();
+                break;
+            //VENTAS
+            case 1:
+                data = objDato.SeleccionaDatosVentas();
+                break;
+
+        }
+        return data;
+    }
+    #endregion
 }
