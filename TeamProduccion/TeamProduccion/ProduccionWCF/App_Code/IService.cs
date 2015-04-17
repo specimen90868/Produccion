@@ -109,4 +109,15 @@ public interface IService
     [OperationContract]
     List<string> ReporteConsumoVentas(string datos, int tipo);
     #endregion
+
+    #region INSUMOS
+    [OperationContract]
+    string GetInsumos();
+
+    [OperationContract]
+    DataTable GetInsumo(string insumo);
+
+    [OperationContract]
+    bool InsertarInsumo(string insumo);
+    #endregion
 }

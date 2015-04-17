@@ -290,4 +290,31 @@ public class Service : IService
         return data;
     }
     #endregion
+
+    #region METODOS DE INSUMOS
+    public string GetInsumos()
+    {
+        ClsInsumos objInsumos = new ClsInsumos();
+        string datos;
+        datos = objInsumos.SeleccionaDatos();
+        return datos;
+
+    }
+    public DataTable GetInsumo(string usuario)
+    {
+        ClsInsumos objInsumo = new ClsInsumos();
+        DataTable datos = new DataTable();
+        objInsumo = JsonConvert.DeserializeObject<ClsInsumos>(usuario);
+        datos = objInsumo.SeleccionaDato();
+        return datos;
+    }
+
+    public bool InsertarInsumo(string insumo)
+    {
+        ClsInsumos objInsumos = new ClsInsumos();
+        objInsumos = JsonConvert.DeserializeObject<ClsInsumos>(insumo);
+        bool valido = objInsumos.InsertaDatos();
+        return valido;
+    }
+    #endregion
 }
