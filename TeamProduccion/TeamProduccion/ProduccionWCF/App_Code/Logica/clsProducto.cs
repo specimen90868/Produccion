@@ -10,9 +10,9 @@ using System.Linq;
 using System.Web;
 
 
-public class ClsInsumos : ILogica
+public class ClsProducto : ILogica
 {
-    public ClsInsumos()
+    public ClsProducto()
     {
         //string cadenaCnn = System.Configuration.ConfigurationManager.ConnectionStrings["CadenaSqlSrv"].ConnectionString;
         _objDatos = new ClsNegocioSQL();
@@ -29,27 +29,26 @@ public class ClsInsumos : ILogica
 
     #region PROPIEDADES
 
-    public int idInsumo { get; set; }
-    public string Nombre { get; set; }
+    public int idProducto { get; set; }
+    public string Producto { get; set; }
     public decimal Precio { get; set; }
-    public int Existencia { get; set; }
-  
+    public List<ClsInsumos> Insumos { get; set; }
+
 
     #endregion
 
     #region METODOS GENERALES PARA EL MANEJO DE DATOS
 
-    public List<ClsInsumos> ConvertTableToList(DataTable dttD)
+    public List<ClsProducto> ConvertTableToList(DataTable dttD)
     {
-        List<ClsInsumos> lstInsumos = new List<ClsInsumos>();
+        List<ClsProducto> lstInsumos = new List<ClsProducto>();
         foreach (DataRow registro in dttD.Rows)
         {
-            ClsInsumos objInsumo = new ClsInsumos();
-            objInsumo.idInsumo = int.Parse(registro["idinsumo"].ToString());
-            objInsumo.Nombre = registro["nombre"].ToString();
-            objInsumo.Precio = decimal.Parse(registro["precio"].ToString());
-            objInsumo.Existencia = int.Parse(registro["existencia"].ToString());
-            lstInsumos.Add(objInsumo);
+            ClsProducto objProducto = new ClsProducto();
+            objProducto.idProducto = int.Parse(registro["idProducto"].ToString());
+            objProducto.Producto = registro["producto"].ToString();
+            objProducto.Precio = decimal.Parse(registro["precio"].ToString());
+            lstInsumos.Add(objProducto);
         }
         return lstInsumos;
     }
@@ -59,38 +58,30 @@ public class ClsInsumos : ILogica
     #region ACCESO A BASE DE DATOS
     public string SeleccionaDatos()
     {
-        List<ClsInsumos> lstInsumos = null;
-        string sentencia = "SELECT * from insumos";
+        List<ClsProducto> lstProductos = null;
+        string sentencia = "SELECT * from productos";
         var values = (DataTable)_objDatos.EjecutaAdaptador(null, null, sentencia, CommandType.Text, "Insumos");
-        lstInsumos = ConvertTableToList(values);
-        string datos = JsonConvert.SerializeObject(lstInsumos);
+        lstProductos = ConvertTableToList(values);
+        string datos = JsonConvert.SerializeObject(lstProductos);
         return datos;
     }
 
+
     public string SeleccionaDatos(string dato)
-    {
-        List<ClsInsumos> lstInsumos = null;
-        string sentencia = "SELECT * from insumos i " +
-                           "INNER JOIN producto_insumo ip " + 
-                           "ON i.idinsumo = ip.idinsumo " +
-                           "where ip.idproducto = " + dato;
-        var values = (DataTable)_objDatos.EjecutaAdaptador(null, null, sentencia, CommandType.Text, "Insumos");
-        lstInsumos = ConvertTableToList(values);
-        string datos = JsonConvert.SerializeObject(lstInsumos);
-        return datos;
-    }
+    { return null; }
 
     public DataTable SeleccionaDato()
     {
         DataTable lstInsumos = new DataTable();
-        string sentencia = "select * from insumos where idinsumo = @insumo";
+        string sentencia = "select * from productos where idproducto = @producto";
         SqlParameter[] parametros ={
-        new SqlParameter ("insumo", SqlDbType.Int)
+        new SqlParameter ("producto", SqlDbType.Int)
         };
-        Object[] valores = { idInsumo };
+        Object[] valores = { idProducto };
         lstInsumos = (DataTable)_objDatos.EjecutaAdaptador(parametros, valores, sentencia, CommandType.Text, "Insumos");
         return lstInsumos;
     }
+
 
     public DataTable ValidaUsuario()
     {
@@ -104,13 +95,12 @@ public class ClsInsumos : ILogica
     {
         bool valido = false;
 
-        string comando = "INSERT INTO insumos (nombre, precio, existencia) VALUES (@nombre, @precio, @existencia)";
+        string comando = "INSERT INTO productos (producto, precio) VALUES (@producto, @precio)";
         SqlParameter[] parametros = {
-             new SqlParameter("nombre",SqlDbType.NVarChar,50)
+             new SqlParameter("producto",SqlDbType.NVarChar,50)
              ,new SqlParameter("precio",SqlDbType.Decimal,18)
-             ,new SqlParameter("existencia",SqlDbType.Int)
-                                  };
-        Object[] valores = { Nombre, Precio, Existencia };
+        };
+        Object[] valores = { Producto, Precio };
         int n = _objDatos.EjecutaComando(parametros, valores, comando, CommandType.Text);
         if (n > 0)
             valido = true;
@@ -121,14 +111,13 @@ public class ClsInsumos : ILogica
     public bool ActualizaDatos()
     {
         bool valido = false;
-        string comando = "UPDATE insumos SET nombre = @nombre, precio = @precio, existencia = @existencia WHERE idinsumo = @idinsumo";
+        string comando = "UPDATE productos SET producto = @producto, precio = @precio WHERE idproducto = @idproducto";
         SqlParameter[] parametros = {
-             new SqlParameter("idinsumo",SqlDbType.Int,50)
-             ,new SqlParameter("nombre",SqlDbType.NVarChar,50)
+             new SqlParameter("idproducto",SqlDbType.Int,50)
+             ,new SqlParameter("producto",SqlDbType.NVarChar,50)
              ,new SqlParameter("precio",SqlDbType.Decimal,18)
-             ,new SqlParameter("existencia",SqlDbType.Int)
-                                  };
-        Object[] valores = { idInsumo, Nombre, Precio, Existencia };
+        };
+        Object[] valores = { idProducto, Producto, Precio };
         int n = _objDatos.EjecutaComando(parametros, valores, comando, CommandType.Text);
         if (n > 0)
             valido = true;
@@ -139,17 +128,19 @@ public class ClsInsumos : ILogica
     {
         bool valido = false;
 
-        string comando = "DELETE FROM insumos WHERE idinsumo = @idinsumo";
+        string comando = "DELETE FROM productos WHERE idproducto = @idproducto";
         SqlParameter[] parametros = {
-             new SqlParameter("idinsumo",SqlDbType.Int)
+             new SqlParameter("idproducto",SqlDbType.Int)
                                   };
-        Object[] valores = { idInsumo };
+        Object[] valores = { idProducto };
         int n = _objDatos.EjecutaComando(parametros, valores, comando, CommandType.Text);
         if (n > 0)
             valido = true;
 
         return valido;
     }
+
+
 
     public bool ActualizaPago()
     { return false; }
@@ -163,7 +154,6 @@ public class ClsInsumos : ILogica
         return dt.Rows.Cast<DataRow>()
             .ToDictionary(r => r[id].ToString(),
             r => cols.ToDictionary(c => c.ColumnName, c => r[c.ColumnName]));
-
     }
 
     #endregion

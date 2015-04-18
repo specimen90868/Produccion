@@ -120,4 +120,12 @@ public interface IService
     [OperationContract]
     bool InsertarInsumo(string insumo);
     #endregion
+
+    #region PRODUCTOS
+    [OperationContract]
+    string GetProductos();
+
+    [OperationContract]
+    string getInsumosProducto(int id);
+    #endregion
 }

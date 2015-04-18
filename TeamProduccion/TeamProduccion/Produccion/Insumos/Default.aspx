@@ -5,7 +5,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <h1>Insumos</h1>
 
-    <div class="col-sm-5 col-lg-5">
+    <div class="col-sm-6 col-lg-6">
         <div class="form-group">
             <label>Nombre</label><br />
             <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
@@ -24,7 +24,6 @@
         <asp:Button ID="Button1" runat="server" CssClass="btn btn-default" Text="Guardar" OnClick="Button1_Click" />
     </div>
 
-    <div class="col-sm-1 col-lg-1"></div>
 
     <div class="col-lg-6 col-sm-6">
         <asp:GridView CssClass="table" ID="GridView1" runat="server"></asp:GridView>

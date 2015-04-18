@@ -317,4 +317,19 @@ public class Service : IService
         return valido;
     }
     #endregion
+
+    #region PRODUCTOS
+    public string GetProductos()
+    {
+        ClsProducto objProductos = new ClsProducto();
+        string datos = objProductos.SeleccionaDatos();
+        return datos;
+    }
+
+    public string getInsumosProducto(int id) {
+        ClsInsumos i = new ClsInsumos();
+        return i.SeleccionaDatos(id.ToString());
+    }
+
+    #endregion
 }
