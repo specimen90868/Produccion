@@ -26,7 +26,7 @@ public partial class frmcompra : System.Web.UI.Page
                 ClsCompra objDato = new ClsCompra();
                 objDato.IdCompra = Id;
                 dttDato = objWCF.getCompra(JsonConvert.SerializeObject(objDato));
-                txtInsumo.Text = dttDato.Rows[0]["idinsumo"].ToString();
+                ddlInsumo.SelectedValue = dttDato.Rows[0]["idinsumo"].ToString();
                 ddlProveedor.SelectedValue = dttDato.Rows[0]["idproveedor"].ToString();
                 txtCantidad.Text = dttDato.Rows[0]["cantidad"].ToString();
                 txtPrecio.Text = dttDato.Rows[0]["precio"].ToString();
@@ -54,12 +54,20 @@ public partial class frmcompra : System.Web.UI.Page
         ddlProveedor.DataTextField = "proveedor";
         ddlProveedor.DataValueField = "idproveedor";
         ddlProveedor.DataBind();
+
+        string insumos = objWCF.GetInsumos();
+        var i = JsonConvert.DeserializeObject<List<ClsInsumo>>(insumos);
+        ddlInsumo.DataSource = i.ToList();
+        ddlInsumo.DataTextField = "insumo";
+        ddlInsumo.DataValueField = "idinsumo";
+        ddlInsumo.DataBind();
+
     }
     protected void btnGuardar_Click(object sender, EventArgs e)
     {
         bool valido = false;
         ClsCompra objDato = new ClsCompra();
-        objDato.IdInsumo = int.Parse(txtInsumo.Text);
+        objDato.IdInsumo = int.Parse(ddlInsumo.SelectedValue);
         objDato.Idproveedor = int.Parse(ddlProveedor.SelectedValue.ToString());
         objDato.Cantidad = int.Parse(txtCantidad.Text);
         objDato.Precio = decimal.Parse(txtPrecio.Text);
@@ -74,15 +82,15 @@ public partial class frmcompra : System.Web.UI.Page
             {
                 Session["sesTitulo"] = "Compra";
                 Session["sesMensaje"] = "La compra se ingresó correctamente.";
-                Session["sesPagina"] = "/Compra/compras.aspx";
-                Server.Transfer("/mensaje.aspx");
+                Session["sesPagina"] = "/lsw/serviciolsw/Compra/compras.aspx";
+                Server.Transfer("/lsw/serviciolsw/mensaje.aspx");
             }
             else
             {
                 Session["sesTitulo"] = "Compra";
                 Session["sesMensaje"] = "La compra se no se pudo realizar correctamente.";
-                Session["sesPagina"] = "/Compra/frmcompra.aspx?Id=0";
-                Server.Transfer("/mensaje.aspx");
+                Session["sesPagina"] = "/lsw/serviciolsw/Compra/frmcompra.aspx?Id=0";
+                Server.Transfer("/lsw/serviciolsw/mensaje.aspx");
             }
         }
         else
@@ -93,16 +101,33 @@ public partial class frmcompra : System.Web.UI.Page
             {
                 Session["sesTitulo"] = "Compra";
                 Session["sesMensaje"] = "La compra fue actualizada correctamente.";
-                Session["sesPagina"] = "/Compra/compras.aspx";
-                Server.Transfer("/mensaje.aspx");
+                Session["sesPagina"] = "/lsw/serviciolsw/Compra/compras.aspx";
+                Server.Transfer("/lsw/serviciolsw/mensaje.aspx");
             }
             else
             {
                 Session["sesTitulo"] = "Compra";
                 Session["sesMensaje"] = "La compra no pudo ser actualizada.";
-                Session["sesPagina"] = "/Compra/frmcompra.aspx?Id=" + Id;
-                Server.Transfer("/mensaje.aspx");
+                Session["sesPagina"] = "/lsw/serviciolsw/Compra/frmcompra.aspx?Id=" + Id;
+                Server.Transfer("/lsw/serviciolsw/mensaje.aspx");
             }
+        }
+    }
+
+    protected void txtCantidad_TextChanged(object sender, EventArgs e)
+    {
+        txtTotal.Text = (decimal.Parse(txtCantidad.Text) * decimal.Parse(txtPrecio.Text)).ToString();
+    }
+
+    protected void ddlInsumo_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        ClsInsumo objInsumo = new ClsInsumo();
+        objInsumo.idinsumo = int.Parse(ddlInsumo.SelectedValue);
+        DataTable ddtDato = new DataTable();
+        ddtDato = objWCF.GetInsumo(JsonConvert.SerializeObject(objInsumo));
+        foreach (DataRow fila in ddtDato.Rows)
+        {
+            txtPrecio.Text = fila["precio"].ToString();
         }
     }
 }

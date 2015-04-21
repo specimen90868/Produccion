@@ -50,15 +50,26 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Produccion(3)", "http://loc
 		{BC7969F7-4262-406C-B721-F6902CDB28EB} = {BC7969F7-4262-406C-B721-F6902CDB28EB}
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "REST", "..\TeamProduccion\REST\REST.csproj", "{179C5F80-089C-445D-9E5A-B4E5888FA10E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{BC7969F7-4262-406C-B721-F6902CDB28EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{BC7969F7-4262-406C-B721-F6902CDB28EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC7969F7-4262-406C-B721-F6902CDB28EB}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC7969F7-4262-406C-B721-F6902CDB28EB}.Release|Any CPU.Build.0 = Debug|Any CPU
 		{E569F4AE-5E20-4C28-8EC6-884539D64F4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E569F4AE-5E20-4C28-8EC6-884539D64F4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E569F4AE-5E20-4C28-8EC6-884539D64F4A}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{E569F4AE-5E20-4C28-8EC6-884539D64F4A}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{179C5F80-089C-445D-9E5A-B4E5888FA10E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{179C5F80-089C-445D-9E5A-B4E5888FA10E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{179C5F80-089C-445D-9E5A-B4E5888FA10E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{179C5F80-089C-445D-9E5A-B4E5888FA10E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

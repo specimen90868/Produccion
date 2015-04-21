@@ -4,19 +4,29 @@
     <div>
         <h2>Datos de proveedor</h2>
     </div>
-        <div>
-            <label>Nombre:</label>
-            <asp:TextBox ID="txtNombre" runat="server"></asp:TextBox>
-        </div>
-        <div>
-            <label>Dirección:</label>
-            <asp:TextBox ID="txtDireccion" runat="server"></asp:TextBox>
-        </div>
-        <div>
-            <label>Contacto:</label>
-            <asp:TextBox ID="txtContacto" runat="server"></asp:TextBox>
-        </div>
-        <div>
-            <asp:Button ID="btnGuarcar" runat="server" Text="Guardar" OnClick="btnGuarcar_Click"/>
+        <div class="form-horizontal">
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Nombre:</label>
+                <div class="col-sm-10">
+                    <asp:TextBox ID="txtNombre" class="form-control" runat="server"></asp:TextBox>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Dirección:</label>
+                <div class="col-sm-10">
+                    <asp:TextBox ID="txtDireccion" class="form-control" runat="server"></asp:TextBox>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Contacto:</label>
+                <div class="col-sm-10">
+                    <asp:TextBox ID="txtContacto" class="form-control" runat="server"></asp:TextBox>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <asp:Button ID="btnGuarcar" CssClass="btn btn-default" runat="server" Text="Guardar" OnClick="btnGuarcar_Click"/>
+                </div>
+            </div>
         </div>
 </asp:Content>

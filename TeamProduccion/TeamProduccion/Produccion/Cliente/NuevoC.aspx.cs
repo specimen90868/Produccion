@@ -16,7 +16,7 @@ public partial class Cliente_NuevoC : System.Web.UI.Page
     {
         wcfProduccion.ServiceClient objServicio = new wcfProduccion.ServiceClient();
         Cliente objCliente = new Cliente();
-        objCliente.nombre = txtNombre.Text;
+        objCliente.cliente = txtNombre.Text;
         objCliente.direccion = txtDireccion.Text;
         objCliente.contacto = txtContacto.Text;
         bool valor = false;
@@ -26,8 +26,8 @@ public partial class Cliente_NuevoC : System.Web.UI.Page
         {
             Session["sesTitulo"] = "Cliente";
             Session["sesMensaje"] = "El cliente fue ingresado correctamente.";
-            Session["sesPagina"] = "/Cliente/principalclient.aspx";
-            Server.Transfer("/mensaje.aspx");
+            Session["sesPagina"] = "/lsw/serviciolsw/Cliente/principalclient.aspx";
+            Server.Transfer("/lsw/serviciolsw/mensaje.aspx");
         }
         else
             lblCliente.Text = "Problemas al Insertar";

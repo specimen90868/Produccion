@@ -29,20 +29,21 @@ public class ClsClientes: ILogica
 
     #region PROPIEDADES
 
-    private int _idclientes;
-    private string _nombre;
+    private int _idcliente;
+    private string _cliente;
     private string _direccion;
     private string _contacto;
-    public int Idclientes
+    
+    public int Idcliente
     {
-        get { return _idclientes; }
-        set { _idclientes = value; }
+        get { return _idcliente; }
+        set { _idcliente = value; }
     }
 
-    public string Nombre
+    public string Cliente
     {
-        get { return _nombre; }
-        set { _nombre = value; }
+        get { return _cliente; }
+        set { _cliente = value; }
     }
 
     public string Direccion
@@ -65,8 +66,8 @@ public class ClsClientes: ILogica
         foreach (DataRow registro in dttD.Rows)
         {
             ClsClientes objCliente = new ClsClientes();
-            objCliente.Idclientes = int.Parse(registro["idcliente"].ToString());
-            objCliente.Nombre = registro["cliente"].ToString();
+            objCliente.Idcliente = int.Parse(registro["idcliente"].ToString());
+            objCliente.Cliente = registro["cliente"].ToString();
             objCliente.Direccion = registro["direccion"].ToString();
             objCliente.Contacto = registro["contacto"].ToString();
             
@@ -98,7 +99,7 @@ public class ClsClientes: ILogica
         SqlParameter[] parametros = {
                                         new SqlParameter("idclientes",SqlDbType.Int,50)
                                     };
-        Object[] valores = { _idclientes };
+        Object[] valores = { _idcliente };
         lsClientes = (DataTable)_objDatos.EjecutaAdaptador(parametros, valores, sentencia, CommandType.Text, "Clientes");
         return lsClientes;
     }
@@ -118,7 +119,7 @@ public class ClsClientes: ILogica
                                        , new SqlParameter("direccion",SqlDbType.NVarChar,50)
                                        , new SqlParameter("contacto",SqlDbType.NVarChar,50)
                                    };
-        Object[] valores = { _nombre, _direccion, _contacto };
+        Object[] valores = { _cliente, _direccion, _contacto };
         int n = _objDatos.EjecutaComando(parametros, valores, comando, CommandType.Text);
         if(n > 0)
             valido = true;
@@ -135,7 +136,7 @@ public class ClsClientes: ILogica
                                        , new SqlParameter("direccion",SqlDbType.NVarChar,50)
                                        , new SqlParameter("contacto", SqlDbType.NVarChar,50)
                                    };
-        Object[] valores = { _idclientes, _nombre, _direccion, _contacto };
+        Object[] valores = { _idcliente, _cliente, _direccion, _contacto };
         int n = _objDatos.EjecutaComando(parametros, valores, comando, CommandType.Text);
         if (n > 0)
             valido = true;
@@ -152,7 +153,7 @@ public class ClsClientes: ILogica
         SqlParameter[] parametros = {
                                         new SqlParameter("idclientes",SqlDbType.Int,50)
                                     };
-        Object[] valores = { _idclientes };
+        Object[] valores = { _idcliente };
         int n = _objDatos.EjecutaComando(parametros, valores, comando, CommandType.Text);
         if (n > 0)
             valido = true;

@@ -30,7 +30,7 @@ public class ClsInsumos : ILogica
     #region PROPIEDADES
 
     public int idInsumo { get; set; }
-    public string Nombre { get; set; }
+    public string Insumo { get; set; }
     public decimal Precio { get; set; }
     public int Existencia { get; set; }
   
@@ -46,7 +46,7 @@ public class ClsInsumos : ILogica
         {
             ClsInsumos objInsumo = new ClsInsumos();
             objInsumo.idInsumo = int.Parse(registro["idinsumo"].ToString());
-            objInsumo.Nombre = registro["nombre"].ToString();
+            objInsumo.Insumo = registro["insumo"].ToString();
             objInsumo.Precio = decimal.Parse(registro["precio"].ToString());
             objInsumo.Existencia = int.Parse(registro["existencia"].ToString());
             lstInsumos.Add(objInsumo);
@@ -98,19 +98,31 @@ public class ClsInsumos : ILogica
     }
 
     public bool Existe()
-    { return false; }
+    {
+        bool valido = false;
+        string comando = "UPDATE insumos SET existencia = @existencia WHERE idinsumo = @idinsumo";
+        SqlParameter[] parametros = {
+             new SqlParameter("idinsumo",SqlDbType.Int,50)
+             ,new SqlParameter("existencia",SqlDbType.Int)
+                                  };
+        Object[] valores = { idInsumo, Existencia };
+        int n = _objDatos.EjecutaComando(parametros, valores, comando, CommandType.Text);
+        if (n > 0)
+            valido = true;
+        return valido;
+    }
 
     public bool InsertaDatos()
     {
         bool valido = false;
 
-        string comando = "INSERT INTO insumos (nombre, precio, existencia) VALUES (@nombre, @precio, @existencia)";
+        string comando = "INSERT INTO insumos (insumo, precio, existencia) VALUES (@nombre, @precio, @existencia)";
         SqlParameter[] parametros = {
              new SqlParameter("nombre",SqlDbType.NVarChar,50)
              ,new SqlParameter("precio",SqlDbType.Decimal,18)
              ,new SqlParameter("existencia",SqlDbType.Int)
                                   };
-        Object[] valores = { Nombre, Precio, Existencia };
+        Object[] valores = { Insumo, Precio, Existencia };
         int n = _objDatos.EjecutaComando(parametros, valores, comando, CommandType.Text);
         if (n > 0)
             valido = true;
@@ -121,14 +133,14 @@ public class ClsInsumos : ILogica
     public bool ActualizaDatos()
     {
         bool valido = false;
-        string comando = "UPDATE insumos SET nombre = @nombre, precio = @precio, existencia = @existencia WHERE idinsumo = @idinsumo";
+        string comando = "UPDATE insumos SET insumo = @nombre, precio = @precio, existencia = @existencia WHERE idinsumo = @idinsumo";
         SqlParameter[] parametros = {
              new SqlParameter("idinsumo",SqlDbType.Int,50)
              ,new SqlParameter("nombre",SqlDbType.NVarChar,50)
              ,new SqlParameter("precio",SqlDbType.Decimal,18)
              ,new SqlParameter("existencia",SqlDbType.Int)
                                   };
-        Object[] valores = { idInsumo, Nombre, Precio, Existencia };
+        Object[] valores = { idInsumo, Insumo, Precio, Existencia };
         int n = _objDatos.EjecutaComando(parametros, valores, comando, CommandType.Text);
         if (n > 0)
             valido = true;

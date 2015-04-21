@@ -17,8 +17,8 @@ public partial class Cliente_ActualizaC : System.Web.UI.Page
         wcfProduccion.ServiceClient objServicio = new wcfProduccion.ServiceClient();
         Cliente objCliente = new Cliente();
 
-        objCliente.idclientes = int.Parse(txtId.Text);
-        objCliente.nombre = txtNombre.Text;
+        objCliente.idcliente = int.Parse(txtId.Text);
+        objCliente.cliente = txtNombre.Text;
         objCliente.direccion = txtDireccion.Text;
         objCliente.contacto = txtContacto.Text;
 
@@ -29,8 +29,8 @@ public partial class Cliente_ActualizaC : System.Web.UI.Page
         {
             Session["sesTitulo"] = "Cliente";
             Session["sesMensaje"] = "El cliente fue actualizado correctamente.";
-            Session["sesPagina"] = "/Cliente/principalclient.aspx";
-            Server.Transfer("/mensaje.aspx");
+            Session["sesPagina"] = "/lsw/serviciolsw/Cliente/principalclient.aspx";
+            Server.Transfer("/lsw/serviciolsw/mensaje.aspx");
         }
         else
             lblCliente.Text = "Problemas al Actualizar";

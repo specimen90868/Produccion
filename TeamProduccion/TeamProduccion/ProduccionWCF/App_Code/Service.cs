@@ -101,6 +101,14 @@ public class Service : IService
         bool valido = objDato.ActualizaPago();
         return valido;
     }
+
+    public bool updateExistencia(string datos)
+    {
+        ClsInsumos objDato;
+        objDato = JsonConvert.DeserializeObject<ClsInsumos>(datos);
+        bool valido = objDato.Existe();
+        return valido;
+    }
     #endregion
 
     #region METODOS DE VENTAS
@@ -316,13 +324,30 @@ public class Service : IService
         bool valido = objInsumos.InsertaDatos();
         return valido;
     }
+
+    public bool ActualizaInsumo(string insumo)
+    {
+        ClsInsumos objInsumos = new ClsInsumos();
+        objInsumos = JsonConvert.DeserializeObject<ClsInsumos>(insumo);
+        bool valido = objInsumos.ActualizaDatos();
+        return valido;
+    }
     #endregion
 
-    #region PRODUCTOS
+    #region METODOS DE PRODUCTOS
     public string GetProductos()
     {
         ClsProducto objProductos = new ClsProducto();
         string datos = objProductos.SeleccionaDatos();
+        return datos;
+    }
+
+    public DataTable GetProducto(string dato)
+    {
+        ClsProducto objProducto = new ClsProducto();
+        DataTable datos = new DataTable();
+        objProducto = JsonConvert.DeserializeObject<ClsProducto>(dato);
+        datos = objProducto.SeleccionaDato();
         return datos;
     }
 
@@ -331,5 +356,59 @@ public class Service : IService
         return i.SeleccionaDatos(id.ToString());
     }
 
+    public bool InsertProducto(string datos)
+    {
+        ClsProducto objProductos = new ClsProducto();
+        objProductos = JsonConvert.DeserializeObject<ClsProducto>(datos);
+        bool valido = objProductos.InsertaDatos();
+        return valido;
+    }
+
+    public bool UpdateProducto(string datos)
+    {
+        ClsProducto objProductos = new ClsProducto();
+        objProductos = JsonConvert.DeserializeObject<ClsProducto>(datos);
+        bool valido = objProductos.ActualizaDatos();
+        return valido;
+    }
+
+    public bool DeleteProducto(string dato)
+    {
+        ClsProducto objProductos = new ClsProducto();
+        objProductos = JsonConvert.DeserializeObject<ClsProducto>(dato);
+        bool valido = objProductos.EliminaDatos();
+        return valido;
+    }
+
+    public string ProductoInsumos(string dato)
+    {
+        ClsProductoInsumo objProductoInsumo = new ClsProductoInsumo();
+        objProductoInsumo = JsonConvert.DeserializeObject<ClsProductoInsumo>(dato);
+        string datos = objProductoInsumo.SeleccionaDatos();
+        return datos;
+    }
+
+    public bool InsertProductoInsumos(string lstDatos)
+    {
+        bool valido = false;
+        ClsProductoInsumo objProductoInsumo = new ClsProductoInsumo();
+        List<ClsProductoInsumo> lstProdInsumos = JsonConvert.DeserializeObject<List<ClsProductoInsumo>>(lstDatos);
+        for (int i = 0; i < lstProdInsumos.Count; i++)
+        {
+            objProductoInsumo.IdProducto = lstProdInsumos[i].IdProducto;
+            objProductoInsumo.IdInsumo = lstProdInsumos[i].IdInsumo;
+            objProductoInsumo.Cantidad = lstProdInsumos[i].Cantidad;
+            valido = objProductoInsumo.InsertaDatos();
+        }
+        return valido;
+    }
+
+    public bool DeleteProductoInsumos(string dato)
+    {
+        ClsProductoInsumo objProdInsumo = new ClsProductoInsumo();
+        objProdInsumo = JsonConvert.DeserializeObject<ClsProductoInsumo>(dato);
+        bool valido = objProdInsumo.EliminaDatos();
+        return valido;
+    }
     #endregion
 }

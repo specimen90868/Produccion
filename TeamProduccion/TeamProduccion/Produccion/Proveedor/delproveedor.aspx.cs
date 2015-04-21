@@ -28,20 +28,20 @@ public partial class delproveedor : System.Web.UI.Page
         {
             Session["sesTitulo"] = "Proveedor";
             Session["sesMensaje"] = "El proveedor fue eliminado correctamente.";
-            Session["sesPagina"] = "/Proveedor/proveedores.aspx";
-            Server.Transfer("/mensaje.aspx");
+            Session["sesPagina"] = "/lsw/serviciolsw/Proveedor/proveedores.aspx";
+            Server.Transfer("/lsw/serviciolsw/mensaje.aspx");
         }
         else
         {
             Session["sesTitulo"] = "Proveedor";
             Session["sesMensaje"] = "El proveedor no pudo ser eliminado.";
-            Session["sesPagina"] = "/Proveedor/delproveedor.aspx?Id=" + Id;
-            Server.Transfer("/mensaje.aspx");
+            Session["sesPagina"] = "/lsw/serviciolsw/Proveedor/delproveedor.aspx?Id=" + Id;
+            Server.Transfer("/lsw/serviciolsw/mensaje.aspx");
         }
     }
 
     protected void btnNo_Click(object sender, EventArgs e)
     {
-        Server.Transfer("/Proveedor/proveedores.aspx");      
+        Server.Transfer("/lsw/serviciolsw/Proveedor/proveedores.aspx");      
     }
 }

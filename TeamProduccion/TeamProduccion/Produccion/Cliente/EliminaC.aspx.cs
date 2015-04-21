@@ -16,7 +16,7 @@ public partial class Cliente_EliminaC : System.Web.UI.Page
     {
         wcfProduccion.ServiceClient objServicio = new wcfProduccion.ServiceClient();
         Cliente objCliente = new Cliente();
-        objCliente.idclientes = int.Parse(txtId.Text);
+        objCliente.idcliente = int.Parse(txtId.Text);
         bool valor;
 
         valor = objServicio.EliminaCliente(JsonConvert.SerializeObject(objCliente));
@@ -25,8 +25,8 @@ public partial class Cliente_EliminaC : System.Web.UI.Page
         {
             Session["sesTitulo"] = "Cliente";
             Session["sesMensaje"] = "El cliente fue eliminado correctamente.";
-            Session["sesPagina"] = "/Cliente/principalclient.aspx";
-            Server.Transfer("/mensaje.aspx");
+            Session["sesPagina"] = "/lsw/serviciolsw/Cliente/principalclient.aspx";
+            Server.Transfer("/lsw/serviciolsw/mensaje.aspx");
         }
         else
             lblCliente.Text = "Problemas al Eliminar";

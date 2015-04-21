@@ -12,3 +12,6 @@ C:\Users\Porto Hamwich\documents\visual studio 2013\Projects\Solution1\REST\bin\
 C:\Users\Porto Hamwich\documents\visual studio 2013\Projects\Solution1\REST\bin\System.Web.Http.WebHost.xml
 C:\Users\Porto Hamwich\documents\visual studio 2013\Projects\Solution1\REST\obj\Debug\REST.dll
 C:\Users\Porto Hamwich\documents\visual studio 2013\Projects\Solution1\REST\obj\Debug\REST.pdb
+C:\Users\fabricio.vilchis\Documents\GitHub\Produccion\TeamProduccion\TeamProduccion\REST\obj\Debug\REST.csprojResolveAssemblyReference.cache
+C:\Users\fabricio.vilchis\Documents\GitHub\Produccion\TeamProduccion\TeamProduccion\REST\obj\Debug\REST.dll
+C:\Users\fabricio.vilchis\Documents\GitHub\Produccion\TeamProduccion\TeamProduccion\REST\obj\Debug\REST.pdb

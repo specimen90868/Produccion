@@ -195,7 +195,7 @@ public class ClsVentas : ILogica
     {
         bool valido = false;
 
-        string comando = "INSERT INTO ventas (idcliente, idproducto, idproducto, nopedido, cantidad, nolote, precio, total, fecha, idusuario) " +
+        string comando = "INSERT INTO ventas (idcliente, idproducto, nopedido, cantidad, nolote, precio, total, fecha, idusuario) " +
             "VALUES (@idcliente,@idproducto,@nopedido,@cantidad,@nolote,@precio,@total,@fecha,@idusuario)";
         SqlParameter[] parametros = {
              new SqlParameter("idcliente",SqlDbType.Int,50)

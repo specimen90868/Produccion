@@ -20,8 +20,9 @@ public partial class Compras : System.Web.UI.Page
         var _res = (from c in res
                   select new
                   {
-                      c.IdCompra,
                       c.IdInsumo,
+                      c.IdCompra,
+                      c.Insumo,
                       c.Proveedor,
                       c.Cantidad,
                       c.Precio,
@@ -36,11 +37,12 @@ public partial class Compras : System.Web.UI.Page
     protected void btnBuscar_Click(object sender, EventArgs e)
     {
         var res = from c in lstCompra
-                  where c.IdInsumo.Equals(int.Parse(txtInsumo.Text))
+                  where c.Insumo.Contains(txtInsumo.Text)
                   select new
                   {
-                      c.IdCompra,
                       c.IdInsumo,
+                      c.IdCompra,
+                      c.Insumo,
                       c.Proveedor,
                       c.Cantidad,
                       c.Precio,

@@ -23,8 +23,8 @@ public partial class Usuario_EliminaU : System.Web.UI.Page
         {
             Session["sesTitulo"] = "Usuario";
             Session["sesMensaje"] = "El usuario fue eliminado correctamente.";
-            Session["sesPagina"] = "/Usuario/principaluser.aspx";
-            Server.Transfer("/mensaje.aspx");
+            Session["sesPagina"] = "/lsw/serviciolsw/Usuario/principaluser.aspx";
+            Server.Transfer("/lsw/serviciolsw/mensaje.aspx");
         }
         else
             lblUsuario.Text = ("Usuario no Existe");

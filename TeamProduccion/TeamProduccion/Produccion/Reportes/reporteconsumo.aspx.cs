@@ -11,7 +11,18 @@ public partial class Reportes_reporteconsumo : System.Web.UI.Page
     #region VARIABLE GLOBAL
     wcfProduccion.ServiceClient objWCF = new wcfProduccion.ServiceClient();
     public string ChartLabels = null;
-    public string ChartData = null;
+    public string ChartDataEnero = null;
+    public string ChartDataFebrero = null;
+    public string ChartDataMarzo = null;
+    public string ChartDataAbril = null;
+    public string ChartDataMayo = null;
+    public string ChartDataJunio = null;
+    public string ChartDataJulio = null;
+    public string ChartDataAgosto = null;
+    public string ChartDataSept = null;
+    public string ChartDataOct = null;
+    public string ChartDataNov = null;
+    public string ChartDataDic = null;
     public string id = null;
     #endregion
 
@@ -27,12 +38,18 @@ public partial class Reportes_reporteconsumo : System.Web.UI.Page
         objReporte.FechaFin = DateTime.Parse(this.dtFinal.Value);
         lista = objWCF.ReporteConsumoVentas(JsonConvert.SerializeObject(objReporte), int.Parse(ddlTipoReporte.SelectedValue));
         ChartLabels = lista[0];
-        for (int i = 1; i <= 12; i++)
-        {
-            ChartData = lista[i];
-            id = "\"" + i.ToString() + "\"";
-            Page.ClientScript.RegisterStartupScript(this.GetType(), "CallMyFunction", "DrawChart();", true);
-        }
-
+        ChartDataEnero = lista[1];
+        ChartDataFebrero = lista[2];
+        ChartDataMarzo = lista[3];
+        ChartDataAbril = lista[4];
+        ChartDataMayo = lista[5];
+        ChartDataJunio = lista[6];
+        ChartDataJulio = lista[7];
+        ChartDataAgosto = lista[8];
+        ChartDataSept = lista[9];
+        ChartDataOct = lista[10];
+        ChartDataNov = lista[11];
+        ChartDataDic = lista[12];
+        Page.ClientScript.RegisterStartupScript(this.GetType(), "CallMyFunction", "DrawChart();", true);
     }
 }

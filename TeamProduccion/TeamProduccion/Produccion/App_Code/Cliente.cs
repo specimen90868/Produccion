@@ -8,8 +8,8 @@ using System.Web;
 /// </summary>
 public class Cliente
 {
-    public int idclientes { get; set; }
-    public string nombre { get; set; }
+    public int idcliente { get; set; }
+    public string cliente { get; set; }
     public string direccion { get; set; }
     public string contacto { get; set; }
 }

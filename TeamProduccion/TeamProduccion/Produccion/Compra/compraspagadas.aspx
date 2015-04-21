@@ -3,19 +3,24 @@
 <asp:Content ID="Contenido" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div>
         <h2>Compras</h2>
-        <a href="frmcompra.aspx?Id=0">Nueva compra</a>
-        <a href="compras.aspx?Id=0">Compras pendientes</a>
+        <ul class="nav nav-tabs">
+            <li role="presentation" class="active"><a href="frmcompra.aspx?Id=0">Nueva compra</a></li>
+            <li role="presentation"><a href="compras.aspx?Id=0">Compras pendientes</a></li>
+        </ul>
     </div>
-        <div>
-            <label>Insumo</label>
-            <asp:TextBox ID="txtInsumo" runat="server" placeholder="Insumo"></asp:TextBox>
-            <asp:Button ID="btnBuscar" runat="server" Text="Buscar" OnClick="btnBuscar_Click"/>
+        <div class="form-inline">
+            <div class="form-group">
+                <label>Insumo</label>
+                <asp:TextBox ID="txtInsumo" CssClass="form-control" runat="server" placeholder="Insumo"></asp:TextBox>
+                <asp:Button ID="btnBuscar" CssClass="btn btn-default" runat="server" Text="Buscar" OnClick="btnBuscar_Click"/>
+            </div>
         </div>
+    <br />
         <div>
-            <asp:GridView ID="gvCompras" runat="server" AutoGenerateColumns="false">
+            <asp:GridView ID="gvCompras" CssClass="table table-striped" runat="server" AutoGenerateColumns="false">
                 <Columns>
                     
-                    <asp:BoundField DataField="idinsumo" HeaderText="IdInsumo" />
+                    <asp:BoundField DataField="insumo" HeaderText="Insumo" />
                     <asp:BoundField DataField="proveedor" HeaderText="Proveedor" />
                     <asp:BoundField DataField="cantidad" HeaderText="Cantidad" />
                     <asp:BoundField DataField="precio" HeaderText="Precio" />

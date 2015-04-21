@@ -53,15 +53,15 @@ public partial class frmproveedor : System.Web.UI.Page
             {
                 Session["sesTitulo"] = "Proveedor";
                 Session["sesMensaje"] = "El proveedor fue ingresado correctamente.";
-                Session["sesPagina"] = "/Proveedor/proveedores.aspx";
-                Server.Transfer("/mensaje.aspx");
+                Session["sesPagina"] = "/lsw/serviciolsw/Proveedor/proveedores.aspx";
+                Server.Transfer("/lsw/serviciolsw/mensaje.aspx");
             }
             else
             {
                 Session["sesTitulo"] = "Proveedor";
                 Session["sesMensaje"] = "El proveedor no pudo ser ingresado correctamente.";
-                Session["sesPagina"] = "/Proveedor/frmproveedor.aspx?Id=0";
-                Server.Transfer("/mensaje.aspx");
+                Session["sesPagina"] = "/lsw/serviciolsw/Proveedor/frmproveedor.aspx?Id=0";
+                Server.Transfer("/lsw/serviciolsw/mensaje.aspx");
             }
         }
         else
@@ -72,15 +72,15 @@ public partial class frmproveedor : System.Web.UI.Page
             {
                 Session["sesTitulo"] = "Proveedor";
                 Session["sesMensaje"] = "El proveedor fue actualizado correctamente.";
-                Session["sesPagina"] = "/Proveedor/proveedores.aspx";
-                Server.Transfer("/mensaje.aspx");
+                Session["sesPagina"] = "/lsw/serviciolsw/Proveedor/proveedores.aspx";
+                Server.Transfer("/lsw/serviciolsw/mensaje.aspx");
             }
             else
             {
                 Session["sesTitulo"] = "Proveedor";
                 Session["sesMensaje"] = "El proveedor no pudo ser actualizado correctamente.";
-                Session["sesPagina"] = "/Proveedor/frmproveedor.aspx?Id=" + Id;
-                Server.Transfer("/mensaje.aspx");
+                Session["sesPagina"] = "/lsw/serviciolsw/Proveedor/frmproveedor.aspx?Id=" + Id;
+                Server.Transfer("/lsw/serviciolsw/mensaje.aspx");
             }
         }
     }

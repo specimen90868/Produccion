@@ -27,8 +27,8 @@ public partial class Usuario_ActualizaU : System.Web.UI.Page
         {
             Session["sesTitulo"] = "Usuario";
             Session["sesMensaje"] = "El usuario fue actualizado correctamente.";
-            Session["sesPagina"] = "/Usuario/principaluser.aspx";
-            Server.Transfer("/mensaje.aspx");
+            Session["sesPagina"] = "/lsw/serviciolsw/Usuario/principaluser.aspx";
+            Server.Transfer("/lsw/serviciolsw/mensaje.aspx");
         }
         else
         {

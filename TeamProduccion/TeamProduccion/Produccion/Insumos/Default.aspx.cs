@@ -14,8 +14,8 @@ public partial class Insumos_Default : System.Web.UI.Page
     protected void Button1_Click(object sender, EventArgs e)
     {
         wcfProduccion.ServiceClient objServicio = new wcfProduccion.ServiceClient();
-        Insumo objInsumo = new Insumo();
-        objInsumo.Nombre = TextBox1.Text;
+        ClsInsumo objInsumo = new ClsInsumo();
+        objInsumo.Insumo = TextBox1.Text;
         objInsumo.Precio = decimal.Parse(TextBox2.Text);
         objInsumo.Existencia = int.Parse(TextBox3.Text);
 
@@ -31,9 +31,9 @@ public partial class Insumos_Default : System.Web.UI.Page
     {
         wcfProduccion.ServiceClient cliente = new wcfProduccion.ServiceClient();
         string datos = cliente.GetInsumos();
-        List<Insumo> Lista = new List<Insumo>();
-        Lista = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Insumo>>(datos);
-        GridView1.DataSource = Lista;
-        GridView1.DataBind();
+        List<ClsInsumo> Lista = new List<ClsInsumo>();
+        Lista = Newtonsoft.Json.JsonConvert.DeserializeObject<List<ClsInsumo>>(datos);
+        gvInsumos.DataSource = Lista.ToList();
+        gvInsumos.DataBind();
     }
 }

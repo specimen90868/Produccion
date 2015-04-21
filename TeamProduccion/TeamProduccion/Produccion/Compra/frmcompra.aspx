@@ -4,27 +4,47 @@
     <div>
         <h2>Datos de compra</h2>
     </div>
-        <div>
-            <label>Insumo:</label>
-            <asp:TextBox ID="txtInsumo" runat="server"></asp:TextBox>
+        <div class="form-horizontal">
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Insumo:</label>
+                <div class="col-sm-10">
+                    <asp:DropDownList ID="ddlInsumo" CssClass="form-control" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlInsumo_SelectedIndexChanged" ></asp:DropDownList>
+                </div>
+            </div>
         </div>
-        <div>
-            <label>Proveedor:</label>
-            <asp:DropDownList ID="ddlProveedor" runat="server"></asp:DropDownList>
-        </div>
-        <div>
-            <label>Cantidad:</label>
-            <asp:TextBox ID="txtCantidad" runat="server"></asp:TextBox>
-        </div>
-        <div>
-            <label>Precio:</label>
-            <asp:TextBox ID="txtPrecio" runat="server"></asp:TextBox>
-        </div>
-        <div>
-            <label>Total:</label>
-            <asp:TextBox ID="txtTotal" runat="server"></asp:TextBox>
-        </div>
-        <div>
-            <asp:Button ID="btnGuardar" runat="server" Text="Guardar" OnClick="btnGuardar_Click"/>
+        <div class="form-horizontal">
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Proveedor:</label>
+                <div class="col-sm-10">
+                    <asp:DropDownList ID="ddlProveedor" CssClass="form-control" runat="server"></asp:DropDownList>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Cantidad:</label>
+                <div class="col-sm-10">
+                    <asp:TextBox ID="txtCantidad" CssClass="form-control" runat="server" OnTextChanged="txtCantidad_TextChanged" AutoPostBack="true"></asp:TextBox>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Precio:</label>
+                <div class="col-sm-10">
+                    <asp:TextBox ID="txtPrecio" CssClass="form-control" runat="server"></asp:TextBox>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Total:</label>
+                <div class="col-sm-10">
+                    <asp:TextBox ID="txtTotal" CssClass="form-control" runat="server"></asp:TextBox>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <asp:Button ID="btnGuardar" CssClass="btn btn-default" runat="server" Text="Guardar" OnClick="btnGuardar_Click"/>
+                </div>
+            </div>
         </div>
 </asp:Content>

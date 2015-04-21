@@ -33,8 +33,6 @@ public class ClsProducto : ILogica
     public string Producto { get; set; }
     public decimal Precio { get; set; }
     public List<ClsInsumos> Insumos { get; set; }
-
-
     #endregion
 
     #region METODOS GENERALES PARA EL MANEJO DE DATOS
@@ -72,12 +70,12 @@ public class ClsProducto : ILogica
 
     public DataTable SeleccionaDato()
     {
-        DataTable lstInsumos = new DataTable();
         string sentencia = "select * from productos where idproducto = @producto";
+        DataTable lstInsumos = new DataTable();
         SqlParameter[] parametros ={
-        new SqlParameter ("producto", SqlDbType.Int)
-        };
-        Object[] valores = { idProducto };
+            new SqlParameter ("producto", SqlDbType.Int)
+            };
+        Object[] valores = { idProducto };;
         lstInsumos = (DataTable)_objDatos.EjecutaAdaptador(parametros, valores, sentencia, CommandType.Text, "Insumos");
         return lstInsumos;
     }
@@ -139,8 +137,6 @@ public class ClsProducto : ILogica
 
         return valido;
     }
-
-
 
     public bool ActualizaPago()
     { return false; }

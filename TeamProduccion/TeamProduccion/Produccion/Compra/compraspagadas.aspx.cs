@@ -21,7 +21,7 @@ public partial class compraspagadas : System.Web.UI.Page
                     select new
                     {
                         c.IdCompra,
-                        c.IdInsumo,
+                        c.Insumo,
                         c.Proveedor,
                         c.Cantidad,
                         c.Precio,
@@ -36,11 +36,11 @@ public partial class compraspagadas : System.Web.UI.Page
     protected void btnBuscar_Click(object sender, EventArgs e)
     {
         var res = from c in lstCompra
-                  where c.IdInsumo.Equals(int.Parse(txtInsumo.Text))
+                  where c.Insumo.Contains(txtInsumo.Text)
                   select new
                   {
                       c.IdCompra,
-                      c.IdInsumo,
+                      c.Insumo,
                       c.Proveedor,
                       c.Cantidad,
                       c.Precio,

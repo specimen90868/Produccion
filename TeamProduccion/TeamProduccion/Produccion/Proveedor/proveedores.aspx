@@ -5,23 +5,26 @@
         <h2>Proveedores</h2>
         <a href="frmproveedor.aspx?Id=0">Agregar nuevo</a>
     </div>
-        <div>
-            <label>Proveedor</label>
-            <asp:TextBox ID="txtProveedor" runat="server" placeholder="Nombre"></asp:TextBox>
-            <asp:Button ID="btnBuscar" runat="server" Text="Buscar" OnClick="btnBuscar_Click"/>
+        <div class="form-inline">
+            <div class="form-group">
+                <label>Proveedor</label>
+                <asp:TextBox ID="txtProveedor" class="form-control" runat="server" placeholder="Nombre"></asp:TextBox>
+            </div>
+            <asp:Button ID="btnBuscar" class="btn btn-default" runat="server" Text="Buscar" OnClick="btnBuscar_Click"/>
         </div>
+        <br />
         <div>
-            <asp:GridView ID="gvProveedores" runat="server" AutoGenerateColumns="false">
+            <asp:GridView ID="gvProveedores" class="table table-striped" runat="server" AutoGenerateColumns="false">
                 <Columns>
                     <asp:BoundField DataField="proveedor" HeaderText="Proveedor" />
                     <asp:BoundField DataField="direccion" HeaderText="Direccion" />
                     <asp:BoundField DataField="contacto" HeaderText="Contacto" />
                     <asp:HyperLinkField HeaderText="Editar"
-                        DataNavigateUrlFormatString="/Proveedor/frmproveedor.aspx?Id={0}"
+                        DataNavigateUrlFormatString="/lsw/serviciolsw/Proveedor/frmproveedor.aspx?Id={0}"
                         DataNavigateUrlFields="idproveedor"
                         Text="Editar" />
                     <asp:HyperLinkField HeaderText="Eliminar" 
-                        DataNavigateUrlFormatString="/Proveedor/delproveedor.aspx?Id={0}"
+                        DataNavigateUrlFormatString="/lsw/serviciolsw/Proveedor/delproveedor.aspx?Id={0}"
                         DataNavigateUrlFields="idproveedor" 
                         Text="Borrar" />
                 </Columns>

@@ -46,6 +46,9 @@ public interface IService
 
     [OperationContract]
     bool updatePago(string datos);
+
+    [OperationContract]
+    bool updateExistencia(string datos);
     #endregion
 
     #region VENTAS
@@ -119,6 +122,9 @@ public interface IService
 
     [OperationContract]
     bool InsertarInsumo(string insumo);
+
+    [OperationContract]
+    bool ActualizaInsumo(string insumo);
     #endregion
 
     #region PRODUCTOS
@@ -127,5 +133,28 @@ public interface IService
 
     [OperationContract]
     string getInsumosProducto(int id);
+
+    [OperationContract]
+    bool InsertProducto(string datos);
+
+    [OperationContract]
+    bool UpdateProducto(string datos);
+
+    [OperationContract]
+    DataTable GetProducto(string dato);
+
+    [OperationContract]
+    bool DeleteProducto(string dato);
+    #endregion
+    
+    #region PRODUCTO INSUMO
+    [OperationContract]
+    string ProductoInsumos(string dato);
+
+    [OperationContract]
+    bool InsertProductoInsumos(string datos);
+
+    [OperationContract]
+    bool DeleteProductoInsumos(string dato);
     #endregion
 }
